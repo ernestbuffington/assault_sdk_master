@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3ed48caf-5cb9-4a56-914a-ad329847b133}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{73c77cdc-ce7b-4546-b71e-b2971a7a222b}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Assault Mod Final 2.0">
+      <UniqueIdentifier>{2356217d-fb09-4993-a9d7-9eaa0652f87c}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
+    </Filter>
+    <Filter Include="Config Files">
+      <UniqueIdentifier>{30f1be3a-764f-4c6a-84f7-a2bcdaf4ff1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ai_assault.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_bitch.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_bum_sit.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_dog.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_punk.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_runt.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_shorty.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_thug.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_thug_sit.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ai_whore.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_all.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_crystalpalace.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_log.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_posionville.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_radiocity.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_shipyards.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_skidrow.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_steeltown.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="ep_trainyard.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="file.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ai.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ai_ents.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ai_fight.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_ai_memory.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cast.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="G_chase.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_cmds.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_combat.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_func.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_items.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_joe_misc.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_main.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_misc.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_pawn.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_phys.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_save.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_spawn.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_svcmds.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_target.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_teamplay.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_trigger.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_utils.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="g_weapon.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="m_bbox.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="m_move.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="p_client.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="p_hud.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="p_view.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="p_weapon.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="q_shared.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="tourney.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="vehicles.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="voice.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="voice_bitch.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+    <ClCompile Include="voice_punk.c">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ai_bitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_bitch_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_bum_sit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_dog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_dog_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_punk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_punk_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_runt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_runt_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_shorty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_shorty_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_thug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_thug2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_thug2_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_thug_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_whore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ai_whore_tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ep_all.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ep_log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_ai.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_local.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_nav.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="g_teamplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gslog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="m_player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="q_shared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdlog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="veh_defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vehicles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice_bitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="voice_punk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="game.def">
+      <Filter>Assault Mod Final 2.0</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\about.txt">
+      <Filter>Config Files</Filter>
+    </Text>
+    <Text Include="..\readme.txt">
+      <Filter>Config Files</Filter>
+    </Text>
+    <Text Include="..\teammaps.txt">
+      <Filter>Config Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\kpded2.exe">
+      <Filter>Config Files</Filter>
+    </None>
+    <None Include="..\assault.ini">
+      <Filter>Config Files</Filter>
+    </None>
+    <None Include="..\server.cfg">
+      <Filter>Config Files</Filter>
+    </None>
+    <None Include="..\teammaps.lst">
+      <Filter>Config Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

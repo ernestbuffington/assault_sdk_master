@@ -1,0 +1,195 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: game - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP5185.TMP" with contents
+[
+/nologo /MT /W3 /GX /Zi /O2 /Ob2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp".\Release/game.pch" /YX /Fo".\Release/" /Fd".\Release/" /FD /c 
+"C:\Program Files\Kingpin\assault\virgin23\ai_assault.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_bitch.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_bum_sit.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_dog.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_punk.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_runt.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_shorty.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_thug.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_thug_sit.c"
+"C:\Program Files\Kingpin\assault\virgin23\ai_whore.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_all.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_crystalpalace.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_log.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_posionville.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_radiocity.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_shipyards.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_skidrow.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_steeltown.c"
+"C:\Program Files\Kingpin\assault\virgin23\ep_trainyard.c"
+"C:\Program Files\Kingpin\assault\virgin23\file.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_ai.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_ai_ents.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_ai_fight.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_ai_memory.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_cast.c"
+"C:\Program Files\Kingpin\assault\virgin23\G_chase.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_cmds.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_combat.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_func.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_items.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_joe_misc.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_main.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_misc.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_pawn.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_phys.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_save.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_spawn.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_svcmds.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_target.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_teamplay.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_trigger.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_utils.c"
+"C:\Program Files\Kingpin\assault\virgin23\g_weapon.c"
+"C:\Program Files\Kingpin\assault\virgin23\m_bbox.c"
+"C:\Program Files\Kingpin\assault\virgin23\m_move.c"
+"C:\Program Files\Kingpin\assault\virgin23\p_client.c"
+"C:\Program Files\Kingpin\assault\virgin23\p_hud.c"
+"C:\Program Files\Kingpin\assault\virgin23\p_view.c"
+"C:\Program Files\Kingpin\assault\virgin23\p_weapon.c"
+"C:\Program Files\Kingpin\assault\virgin23\q_shared.c"
+"C:\Program Files\Kingpin\assault\virgin23\tourney.c"
+"C:\Program Files\Kingpin\assault\virgin23\vehicles.c"
+"C:\Program Files\Kingpin\assault\virgin23\voice.c"
+"C:\Program Files\Kingpin\assault\virgin23\voice_bitch.c"
+"C:\Program Files\Kingpin\assault\virgin23\voice_punk.c"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5185.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5186.TMP" with contents
+[
+navlib\navlib.lib /nologo /base:"0x20000000" /subsystem:windows /dll /incremental:no /pdb:"..\Release/gamex86.pdb" /machine:I386 /nodefaultlib:"LIBC" /def:".\game.def" /out:"..\gamex86.dll" /implib:"..\Release/gamex86.lib" 
+".\Release\ai_assault.obj"
+".\Release\ai_bitch.obj"
+".\Release\ai_bum_sit.obj"
+".\Release\ai_dog.obj"
+".\Release\ai_punk.obj"
+".\Release\ai_runt.obj"
+".\Release\ai_shorty.obj"
+".\Release\ai_thug.obj"
+".\Release\ai_thug_sit.obj"
+".\Release\ai_whore.obj"
+".\Release\ep_all.obj"
+".\Release\ep_crystalpalace.obj"
+".\Release\ep_log.obj"
+".\Release\ep_posionville.obj"
+".\Release\ep_radiocity.obj"
+".\Release\ep_shipyards.obj"
+".\Release\ep_skidrow.obj"
+".\Release\ep_steeltown.obj"
+".\Release\ep_trainyard.obj"
+".\Release\file.obj"
+".\Release\g_ai.obj"
+".\Release\g_ai_ents.obj"
+".\Release\g_ai_fight.obj"
+".\Release\g_ai_memory.obj"
+".\Release\g_cast.obj"
+".\Release\G_chase.obj"
+".\Release\g_cmds.obj"
+".\Release\g_combat.obj"
+".\Release\g_func.obj"
+".\Release\g_items.obj"
+".\Release\g_joe_misc.obj"
+".\Release\g_main.obj"
+".\Release\g_misc.obj"
+".\Release\g_pawn.obj"
+".\Release\g_phys.obj"
+".\Release\g_save.obj"
+".\Release\g_spawn.obj"
+".\Release\g_svcmds.obj"
+".\Release\g_target.obj"
+".\Release\g_teamplay.obj"
+".\Release\g_trigger.obj"
+".\Release\g_utils.obj"
+".\Release\g_weapon.obj"
+".\Release\m_bbox.obj"
+".\Release\m_move.obj"
+".\Release\p_client.obj"
+".\Release\p_hud.obj"
+".\Release\p_view.obj"
+".\Release\p_weapon.obj"
+".\Release\q_shared.obj"
+".\Release\tourney.obj"
+".\Release\vehicles.obj"
+".\Release\voice.obj"
+".\Release\voice_bitch.obj"
+".\Release\voice_punk.obj"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP5186.TMP"
+<h3>Output Window</h3>
+Compiling...
+ai_assault.c
+ai_bitch.c
+ai_bum_sit.c
+ai_dog.c
+ai_punk.c
+ai_runt.c
+ai_shorty.c
+ai_thug.c
+ai_thug_sit.c
+ai_whore.c
+ep_all.c
+ep_crystalpalace.c
+ep_log.c
+ep_posionville.c
+ep_radiocity.c
+ep_shipyards.c
+ep_skidrow.c
+ep_steeltown.c
+ep_trainyard.c
+file.c
+g_ai.c
+g_ai_ents.c
+g_ai_fight.c
+g_ai_memory.c
+g_cast.c
+G_chase.c
+g_cmds.c
+g_combat.c
+g_func.c
+g_items.c
+g_joe_misc.c
+g_main.c
+g_misc.c
+g_pawn.c
+g_phys.c
+g_save.c
+g_spawn.c
+g_svcmds.c
+g_target.c
+g_teamplay.c
+g_trigger.c
+g_utils.c
+g_weapon.c
+m_bbox.c
+m_move.c
+p_client.c
+p_hud.c
+p_view.c
+p_weapon.c
+q_shared.c
+tourney.c
+vehicles.c
+voice.c
+voice_bitch.c
+voice_punk.c
+Linking...
+   Creating library ..\Release/gamex86.lib and object ..\Release/gamex86.exp
+
+
+
+<h3>Results</h3>
+gamex86.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,2367 @@
+/*QUAKED cast_bitch (1 .5 0) (-16 -16 -24) (16 16 48) x TRIGGERED_START x x x IMMEDIATE_FOLLOW_PATH MELEE NOSHADOW
+One handed weapon chick
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+
+model="models\actors\bitch\"
+*/
+/*QUAKED cast_whore (1 .5 0) (-16 -16 -24) (16 16 48) FLASH_LIGHT TRIGGERED_START FLAM_BE BAZOOKA HMG IMMEDIATE_FOLLOW_PATH TOMMYGUN GRENADE TRIGGER_SPAWN TOGGLE START_ON  
+Two handed weapon chick
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+
+model="models\actors\whore\"
+*/
+
+/*QUAKED cast_bum_sit (1 .5 0) (-24 -24 -24) (24 24 48) x TRIGGERED_START
+A bum
+cast_group 0	neutral
+They should only be neutrals
+model="models\actors\bum_sit\"
+*/
+
+/*QUAKED cast_dog (1 .5 0) (-16 -16 -16) (16 16 22) x TRIGGERED_START
+Dog 
+cast_group defines which group the character is a member of
+default cast_group is 0, which is neutral (hates everyone in multiplayer)
+cast_group 1 is (friendly to teammates with same style)
+skin = 1 or 2 <1=Dark> <2=Grey>
+model="models\actors\dog\"
+ASSAULT 2: 'dmg' default(20) sets the damage a dogbite inflicts.
+ASSAULT 2: 'profanity_level' untested.
+ASSAULT 2: 'onarampage' untested.
+ASSAULT 2: 'moral' (default = 0) any value greater than one attacks enemy dogs.
+ASSAULT 2: 'style' <1-2> Thugs=1, Runts=2 (default 2).
+*/
+
+/*QUAKED cast_punk (1 .5 0) (-16 -16 -24) (16 16 48) FLASH_LIGHT TRIGGERED_START FLAM_BE BAZOOKA HMG IMMEDIATE_FOLLOW_PATH TOMMYGUN GRENADE  
+Two handed weapon thug
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+
+ASSAULT 2: Give your cast_thug a "dmg" value. 
+Pipe defaults to dmg = 8, pistol to dmg = 3.
+
+ASSAULT 2: killtarget = victimname
+
+model="models\actors\punk\"
+*/
+
+/*QUAKED cast_runt (1 .5 0) (-16 -16 -24) (16 16 48) x TRIGGERED_START x x x IMMEDIATE_FOLLOW_PATH MELEE NOSHADOW
+One handed weapon runt
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+
+
+model="models\actors\runt\"
+*/
+
+/*QUAKED cast_shorty (1 .5 0) (-16 -16 -24) (16 16 48) FLASH_LIGHT TRIGGERED_START FLAM_BE BAZOOKA HMG IMMEDIATE_FOLLOW_PATH TOMMYGUN GRENADE  
+Two handed weapon runt
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+
+model="models\actors\shorty\"
+*/
+
+/*QUAKED cast_thug (1 .5 0) (-16 -16 -24) (16 16 48) AI_FASTWALK TRIGGERED_START x x x IMMEDIATE_FOLLOW_PATH MELEE NOSHADOW
+One handed weapon thug
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+ASSAULT 2: killtarget = victimname
+
+ASSAULT 2: Give your cast_thug a "dmg" value. pipe defaults to 8, pistol to 3.
+
+ASSAULT 2: Give your cast_thug a "count" and it will add hats and/or cigar
+these are like spawnflags, you add them up to get the desired look.
+1 = cigar
+2 = fedora
+4 = stetson
+8 = cap
+For Example: A stetson with a cigar would be count = 5.
+A cap with a cigar would be count = 9.
+
+model="models\actors\thug\"
+*/
+
+/*QUAKED cast_thug_sit (1 .5 0) (-16 -16 -24) (16 16 48) x TRIGGERED_START x x x IMMEDIATE_FOLLOW_PATH MELEE NOSHADOW
+cast_group 0	neutral
+cast_group 1	friendly	
+cast_group 2+	enemy
+guy with the pistol
+
+model="models\actors\thug_sit\"
+*/
+
+/*QUAKED misc_skidrow_radio (.5 .5 1) (-16 -16 -24) (16 16 48)
+Bernie and the guys will listen to this. After the radio has stopped,
+they'll discuss the game for some time.
+
+  "delay"	time to wait between starting to listen to the radio
+  "wait"	time spent listening to the radio each time
+  "speed"	time spent discussing the game afterwards
+*/
+
+/*QUAKED misc_skidrow_radio_repeater (.5 .5 1) (-16 -16 -24) (16 16 48)
+Use to tag the speaker inside the warehouse
+*/
+
+/*QUAKED misc_skidrow_ambush (.5 .5 1) (-16 -16 -24) (16 16 48)
+Used to set ambush location for the 3 guards when the
+player goes into the 2nd door.
+*/
+
+/*QUAKED misc_skidrow_afraid (.5 .5 1) (-16 -16 -24) (16 16 48)
+used by actors to pick location where it is safer to run away from the player
+*/
+
+/*QUAKED ai_boundary (.5 .5 0) ?
+Character will abort pursuing player when touching this brush. Will 
+take cover until the player is out of view, then return to guarding position (if 
+character has been assigned one).
+
+	"moral"	range from 1 (Coward) to 7 (Psycotic). Only characters with an equal or lower moral level will be effected by this brush.
+*/
+
+/*QUAKED ai_event_hostile (.5 .5 0) ?
+Character touching this brush will become a hostile enemy to all other characters
+in LOS, that have the same "cast_group" as the brush.
+
+"cast_group" must be > 0 for this brush to have any effect.
+*/
+
+/*QUAKED ai_event_follow (.5 .5 0) ?
+Client touching this brush will become a leader to all other characters
+in LOS, that have the same "cast_group" as the brush.
+
+"cast_group" must be > 0 for this brush to have any effect.
+*/
+
+/*QUAKED ai_guard (.5 .5 1) (-16 -16 -24) (16 16 48)
+Set a cast's "guard_target" to the "targetname" of this entity.
+That character will then guard this location.
+
+  "targetname" links to "guard_target" for the cast entity(s)
+  "guard_radius" is the max guarding radius (default = 512)
+*/
+
+/*QUAKED ai_territory (.5 .5 0) ?
+Marks the boundary of a gang's territory.
+
+A character touching this will be deemed inside the gang's
+territory. This means war if sighted.
+
+!!NOTE!!: Point the "angles" in the direction of the territory. This lets
+the AI know if the character is walking into or out of the territory.
+
+  "cast_group" is the group that owns this territory
+  "angles" points to the direction of the territory
+  "radius" distance from brush before the player will be attacked (default 512)
+*/
+
+/*QUAKED ai_safespot (.5 .5 1) (-16 -16 -24) (16 16 48)
+
+Set a cast's "flee_target" to the "targetname" of this entity.
+That character will then flee to this location.
+
+  "targetname" links to "flee_target" for the cast entity(s)
+*/
+
+/*QUAKED ai_reset (.5 .5 0) ?
+This is a brush that will reset a cast location to his 
+startup location
+
+  FIXME: Is this implemented yet?
+*/
+
+/*QUAKED ai_combat_spot (.5 .5 1) (-16 -16 -24) (16 16 48)
+
+  A good place to go to get a vantage point during fighting.
+*/
+
+/*QUAKED ai_trigger_character (.5 .5 0) ?
+When the player touches this brush, the targetted character will start
+following it's path_corner.
+
+  "target"	link this with the "targetname" of the character to be triggered
+*/
+
+/*QUAKED ai_locked_door (.5 .5 0) ?
+A character touching this brush will check the targetted door to see if it is closed.
+If so, the character will head towards the specified path_corner_cast.
+
+Example use: guiding AI characters away from a locked door
+
+  "target"		link this with the "targetname" of the door to check
+  "pathtarget"	linked with "targetname" of path_corner_cast to head for
+*/
+
+/*QUAKED func_plat (0 .5 .8) ? PLAT_LOW_TRIGGER
+speed	default 150
+
+Plats are always drawn in the extended position, so they will light correctly.
+
+If the plat is the target of another trigger or button, it will start out disabled in the extended position until it is trigger, when it will lower and become a normal plat.
+
+"speed"	overrides default 200.
+"accel" overrides default 500
+"lip"	overrides default 8 pixel lip
+
+If the "height" key is set, that will determine the amount the plat moves, instead of being implicitly determoveinfoned by the model's height.
+
+Set "sounds" to one of the following:
+1) base fast
+2) chain slow
+*/
+/*QUAKED func_plat (0 .5 .8) ? PLAT_LOW_TRIGGER
+speed	default 150
+
+Plats are always drawn in the extended position, so they will light correctly.
+
+If the plat is the target of another trigger or button, it will start out disabled in the extended position until it is trigger, when it will lower and become a normal plat.
+
+"speed"	overrides default 200.
+"accel" overrides default 500
+"lip"	overrides default 8 pixel lip
+
+If the "height" key is set, that will determine the amount the plat moves, instead of being implicitly determoveinfoned by the model's height.
+
+Set "sounds" to one of the following:
+1) base fast
+2) chain slow
+*/
+
+/*QUAKED func_rotating (0 .5 .8) ? START_ON REVERSE X_AXIS Y_AXIS TOUCH_PAIN STOP ANIMATED ANIMATED_FAST ALPHA
+You need to have an origin brush as part of this entity.  The center of that brush will be
+the point around which it is rotated. It will rotate around the Z axis by default.  You can
+check either the X_AXIS or Y_AXIS box to change that.
+
+"speed" determines how fast it moves; default value is 100.
+"dmg"	damage to inflict when blocked (2 default)
+
+REVERSE will cause the it to rotate in the opposite direction.
+STOP mean it will stop moving instead of pushing entities
+*/
+
+/*QUAKED func_button (0 .5 .8) ? AUTO_OPEN ONOFF
+When a button is touched, it moves some distance in the direction of it's angle, triggers all of it's targets, waits some time, then returns to it's original position where it can be triggered again.
+
+"angle"		determines the opening direction
+"target"	all entities with a matching targetname will be used
+"speed"		override the default 40 speed
+"style"                                    team only buttons
+"wait"		override the default 1 second wait (-1 = never return)
+"lip"		override the default 4 pixel lip remaining at end of move
+"health"	if set, the button must be killed instead of touched
+"sounds"
+1) silent
+2) steam metal
+3) wooden clunk
+4) metallic click
+5) in-out
+"message"             message to print if button is disabled to user
+"type"             path name of the sound to play when button activated
+*/
+
+/*QUAKED func_door (0 .5 .8) ? START_OPEN AUTO_OPEN CRUSHER NOMONSTER ANIMATED TOGGLE ANIMATED_FAST SURF2_ALPHA 
+TOGGLE		wait in both the start and end states for a trigger event.
+START_OPEN	the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors).
+NOMONSTER	monsters will not trigger this door
+
+"message"	is printed when the door is touched if it is a trigger door and it hasn't been fired yet
+"angle"		determines the opening direction
+"targetname" if set, no touch field will be spawned and a remote button or trigger field activates the door.
+"health"	if set, door must be shot open
+"speed"		movement speed (100 default)
+"wait"		wait before returning (3 default, -1 = never return)
+"lip"		lip remaining at end of move (8 default)
+"dmg"		damage to inflict when blocked (2 default)
+"sounds"    default = 2;
+1)	silent
+2)	Medium metal sliding rollup door
+3)	Wooden swinging door 
+4)	Metal swinging door
+5)	Metal light sliding TRAIN door
+6)	Very large rolling metal door
+7)  Metal swing-up garage door
+*/
+
+/*QUAKED func_door_rotating (0 .5 .8) ? START_OPEN REVERSE SURF_ALPHA NOMONSTER ANIMATED TOGGLE X_AXIS Y_AXIS
+TOGGLE causes the door to wait in both the start and end states for a trigger event.
+
+START_OPEN	the door to moves to its destination when spawned, and operate in reverse.  It is used to temporarily or permanently close off an area when triggered (not useful for touch or takedamage doors).
+NOMONSTER	monsters will not trigger this door
+
+You need to have an origin brush as part of this entity.  The center of that brush will be
+the point around which it is rotated. It will rotate around the Z axis by default.  You can
+check either the X_AXIS or Y_AXIS box to change that.
+
+"distance" is how many degrees the door will be rotated.
+"speed" determines how fast the door moves; default value is 100.
+
+REVERSE will cause the door to rotate in the opposite direction.
+
+"style"		0 = rotate away from it's activator, 1 = fixed rotation (default 0)
+"message"	is printed when the door is touched if it is a trigger door and it hasn't been fired yet
+"angle"		determines the opening direction
+"targetname" if set, no touch field will be spawned and a remote button or trigger field activates the door.
+"health"	if set, door must be shot open
+"speed"		movement speed (100 default)
+"wait"		wait before returning (3 default, -1 = never return)
+"dmg"		damage to inflict when blocked (2 default)
+"sounds"    default = 2;
+1)	silent
+2)	Medium metal sliding rollup door
+3)	Wooden swinging door 
+4)	Metal swinging door
+5)	Metal light sliding TRAIN door
+6)	Very large rolling metal door
+7)  Metal swing-up garage door
+*/
+
+/*QUAKED func_subdoor_base (0 .5 .8) ? X REVERSE CRUSHER NOMONSTER ANIMATED TOGGLE X_AXIS Y_AXIS AUTO_OPEN
+
+The func_subdoor_handle1 will rotate 90 deg then the door will open with func_subdoor_handle2.
+  
+TOGGLE causes the door to wait in both the start and end states for a trigger event.
+
+NOMONSTER	monsters will not trigger this door
+
+You need to have an origin brush as part of this entity.  The center of that brush will be
+the point around which it is rotated. It will rotate around the Z axis by default. You can
+check either the X_AXIS or Y_AXIS box to change that.
+
+You also need a:
+
+ func_subdoor_handle1 - Handle with origin in the center
+ 
+ func_subdoor_handle2 - Handle with origin at the door origin
+
+ Both handles are in the same area in level space
+
+"distance" is how many degrees the door will be rotated.
+"speed" determines how fast the door moves; default value is 100.
+
+REVERSE will cause the door to rotate in the opposite direction.
+
+"message"	is printed when the door is touched if it is a trigger door and it hasn't been fired yet
+"angle"		determines the opening direction
+"targetname" if set, no touch field will be spawned and a remote button or trigger field activates the door.
+"health"	if set, door must be shot open
+"speed"		movement speed (100 default)
+"wait"		wait before returning (3 default, -1 = never return)
+"dmg"		damage to inflict when blocked (2 default)
+"sounds"
+1)	silent
+2)	light
+3)	medium
+4)	heavy
+*/
+
+/*QUAKED func_subdoor_handle1 (0 .5 .8) ? X REVERSE X X X X X_AXIS Y_AXIS
+
+Will rotate 90 deg with the func_subdoor_base.
+  
+You need to have an origin brush in the center of this entity. The center of that brush will be
+the point around which it is rotated. It will rotate around the Z axis by default. You can
+check either the X_AXIS or Y_AXIS box to change that.
+
+"duration" is how long the rotation will take place.
+
+REVERSE will cause the handle to rotate in the opposite direction.
+*/
+
+
+/*QUAKED func_subdoor_handle2 (0 .5 .8)
+
+Will rotate with door
+It's origin should be the door's origin
+*/
+
+/*QUAKED func_water (0 .5 .8) ? START_OPEN
+func_water is a moveable water brush.  It must be targeted to operate.  Use a non-water texture at your own risk.
+
+START_OPEN causes the water to move to its destination when spawned and operate in reverse.
+
+"angle"		determines the opening direction (up or down only)
+"speed"		movement speed (25 default)
+"wait"		wait before returning (-1 default, -1 = TOGGLE)
+"lip"		lip remaining at end of move (0 default)
+"sounds"	(yes, these need to be changed)
+0)	no sound
+1)	water
+2)	lava
+*/
+
+/*QUAKED func_train (0 .5 .8) ? START_ON TOGGLE BLOCK_STOPS ALFA
+Trains are moving platforms that players can ride.
+The targets origin specifies the min point of the train at each corner.
+The train spawns at the first target it is pointing at.
+If the train is the target of a button or trigger, it will not begin moving until activated.
+speed	default 100
+dmg		default	2
+noise	looping sound to play when the train is in motion
+*/
+
+/*QUAKED func_lift (0 .5 .8) ? START_ON TOGGLE BLOCK_STOPS
+Lifts are moving platforms that players and ai_characters can ride. (Use only for up and down!!)
+(MUST BE BUTTON ACTIVATED FOR AI TO USE)
+The targets origin specifies the min point of the train at each corner.
+The train spawns at the first target it is pointing at.
+If the train is the target of a button or trigger, it will not begin moving until activated.
+speed	default 100
+dmg		default	2
+noise	looping sound to play when the train is in motion
+*/
+
+
+/*QUAKED func_train_rotating (0 .5 .8) ? START_ON TOGGLE BLOCK_STOPS ALFA ANIMATED ANIMATED_FAST
+Trains are moving platforms that players can ride.
+The targets origin specifies the min point of the train at each corner.
+The train spawns at the first target it is pointing at.
+If the train is the target of a button or trigger, it will not begin moving until activated.
+dmg		 default	2
+noise	 looping sound to play when the train is in motion
+
+  On the path corner:
+speed    departure speed from that corner 
+rotate   angle change for X Y Z to next corner 
+duration duration for angle change (overrides speed)
+*/
+
+/*QUAKED trigger_elevator (0.3 0.1 0.6) (-8 -8 -8) (8 8 8)
+*/
+
+/*QUAKED func_timer (0.3 0.1 0.6) (-8 -8 -8) (8 8 8) START_ON
+"wait"			base time between triggering all targets, default is 1
+"random"		wait variance, default is 0
+
+so, the basic time between firing is a random time between
+(wait - random) and (wait + random)
+
+"delay"			delay before first firing when turned on, default is 0
+
+"pausetime"		additional delay used only the very first time
+				and only if spawned with START_ON
+
+These can used but not touched.
+*/
+
+/*QUAKED func_conveyor (0 .5 .8) ? START_ON TOGGLE
+Conveyors are stationary brushes that move what's on them.
+The brush should be have a surface with at least one current content enabled.
+speed	default 100
+*/
+
+/*QUAKED func_door_secret (0 .5 .8) ? always_shoot 1st_left 1st_down
+A secret door.  Slide back and then to the side.
+
+open_once		doors never closes
+1st_left		1st move is left of arrow
+1st_down		1st move is down from arrow
+always_shoot	door is shootebale even if targeted
+
+"angle"		determines the direction
+"dmg"		damage to inflic when blocked (default 2)
+"wait"		how long to hold in the open position (default 5, -1 means hold)
+*/
+
+/*QUAKED func_killbox (1 0 0) ?
+Kills everything inside when fired, irrespective of protection.
+*/
+
+/*QUAKED item_armor_helmet (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/armor_head/armor_head.md2" 
+*/
+
+/*QUAKED item_adrenaline (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/adrenaline/tris.md2" 
+*/
+
+/*QUAKED item_armor_jacket (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/armor/tris.md2" 
+*/
+
+/*QUAKED item_armor_legs (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/armor_lo/armor_lo.md2" 
+*/
+
+/*QUAKED item_armor_helmet_heavy (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/armor_head/armor_head_hd.md2"
+*/
+
+/*QUAKED item_armor_jacket_heavy (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/armor/armorhdtop.md2"
+*/
+
+/*QUAKED item_armor_legs_heavy (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/armor_lo/armor_lo_hd.md2"
+*/
+
+/*QUAKED item_pack (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/backpack/tris.md2"
+*/
+
+/*QUAKED weapon_crowbar (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_crowbar/tris.md2"
+*/
+
+/*QUAKED weapon_pistol (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_pistol/tris.md2"  
+*/
+
+/*QUAKED weapon_tommygun (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_tomgun/tris.md2"  
+*/
+
+/*QUAKED weapon_shotgun (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_shotgun/tris.md2"  
+*/
+
+/*QUAKED weapon_spaz (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_shotgun/spaz.md2"  
+*/
+
+/*QUAKED weapon_pump (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_shotgun/pump.md2"  
+*/
+
+/*QUAKED weapon_flamethrower (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/flame_shell/tris.md2"    
+*/
+
+/*QUAKED ammo_grenades (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/grenade/tris.md2"  
+*/
+
+/*QUAKED weapon_grenadelauncher (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_grenade_launcher/tris.md2"    
+*/
+
+/*QUAKED weapon_bazooka (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_rocket_launcher/tris.md2"  
+*/
+
+/*QUAKED weapon_heavymachinegun (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/weapons/g_hmg/tris.md2"  
+*/
+
+/*QUAKED ammo_shells (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/shotgun_shell/tris.md2"  
+*/
+
+
+/*QUAKED ammo_bullets (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/pclip/tris.md2"  
+*/
+
+/*QUAKED ammo_rockets (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/rocket/tris.md2" 
+*/
+
+/*QUAKED ammo_308 (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/hmgclip/tris.md2" 
+*/
+
+/*QUAKED ammo_cylinder (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/tgclip/tris.md2"  
+*/
+
+/*QUAKED ammo_flametank (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/flametank/tris.md2"  
+*/
+
+/*QUAKED item_coil (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/coil/tris.md2"  
+*/
+
+/*QUAKED item_cashroll (.3 .3 1) (-16 -16 -16) (16 16 16)
+currentcash - set amount of cash in roll  
+model="models/pu_icon/cash/tris.md2"  
+*/
+
+/*QUAKED item_cashbaglarge (.3 .3 1) (-16 -16 -16) (16 16 16)
+currentcash - set amount of cash in the bag  
+model="models/pu_icon/money/money_lg.md2"  
+*/
+
+/*QUAKED item_cashbagsmall (.3 .3 1) (-16 -16 -16) (16 16 16)
+currentcash - set amount of cash in the bag  
+model="models/pu_icon/money/money_sm.md2"  
+*/
+
+/*QUAKED item_battery (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/battery/tris.md2"  
+*/
+
+/*QUAKED item_health_sm (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/health_s/tris.md2"  
+*/
+
+/*QUAKED item_health_lg (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/health/tris.md2"  
+*/
+
+/*QUAKED item_flashlight (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/f_light/tris.md2"  
+*/
+
+/*QUAKED item_watch (.3 .3 1) (-16 -16 -16) (16 16 16)
+Watch for Lenny
+model="models/pu_icon/watch/tris.md2"  
+*/
+
+/*QUAKED item_whiskey (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/pu_icon/whiskey/tris.md2"  
+Whiskey for the bum
+*/
+
+/*QUAKED key_key1 (0 .5 .8) (-16 -16 -16) (16 16 16)
+Will allow player to unlock doors with a value of
+key 1
+model="models/pu_icon/key/key_a.md2"  
+ASSAULT 2: 'wait' is the number of sec a key waits till it explodes (xSKILL).
+ASSAULT 2: 'option' is something about disabling spawners?
+ASSAULT 2: 'order' is ?
+ASSAULT 2: 'style' <1=Thugs> <2=Runts> every assault key has a style, default 2.
+ASSAULT 2: 'target' depositing key targets an event by the same targetname.
+Assault 2 , "model" specifies a model to use starting in kingpin/main/
+Assault 2 , Example: model models/props/radio/tris.md2
+*/
+
+/*QUAKED key_key2 (0 .5 .8) (-16 -16 -16) (16 16 16)
+Will allow player to unlock doors with a value of
+key 2
+model="models/pu_icon/key/key_a.md2"  
+ASSAULT 2: 'wait' is the number of sec a key waits till it explodes (xSKILL).
+ASSAULT 2: 'option' is something about disabling spawners?
+ASSAULT 2: 'order' is ?
+ASSAULT 2: 'style' <1=Thugs> <2=Runts> every assault key has a style, default 2.
+ASSAULT 2: 'target' depositing key targets an event by the same targetname.
+Assault 2 , "model" specifies a model to use starting in kingpin/main/
+Assault 2 , Example: model models/props/radio/tris.md2
+*/
+
+/*QUAKED key_key3 (0 .5 .8) (-16 -16 -16) (16 16 16)
+Will allow player to unlock doors with a value of
+key 3
+model="models/pu_icon/key/key_a.md2"  
+ASSAULT 2: 'wait' is the number of sec a key waits till it explodes (xSKILL).
+ASSAULT 2: 'option' is something about disabling spawners?
+ASSAULT 2: 'order' is ?
+ASSAULT 2: 'style' <1=Thugs> <2=Runts> every assault key has a style, default 2.
+ASSAULT 2: 'target' depositing key targets an event by the same targetname.
+Assault 2 , "model" specifies a model to use starting in kingpin/main/
+Assault 2 , Example: model models/props/radio/tris.md2
+*/
+
+/*QUAKED key_key4 (0 .5 .8) (-16 -16 -16) (16 16 16)
+Will allow player to unlock doors with a value of
+key 4
+model="models/pu_icon/key/key_a.md2"  
+*/
+
+/*QUAKED key_key5 (0 .5 .8) (-16 -16 -16) (16 16 16)
+Will allow player to unlock doors with a value of
+key 5
+model="models/pu_icon/key/key_a.md2"  
+*/
+
+/*QUAKED pistol_mod_rof (.7 .3 .4) (-16 -16 -16) (16 16 16)
+*/
+
+/*QUAKED pistol_mod_reload (.7 .3 .4) (-16 -16 -16) (16 16 16)
+*/
+
+/*QUAKED pistol_mod_damage (.7 .3 .4) (-16 -16 -16) (16 16 16)
+*/
+
+/*QUAKED hmg_mod_cooling (.7 .3 .4) (-16 -16 -16) (16 16 16)
+*/
+
+
+/*QUAKED props_hydrant (0 .5 .8) (-10 -10 -19) (10 10 19)
+
+A hydrant that does jack
+
+model="models\props\hydrant\"
+*/
+
+/*QUAKED props_antenna1a (0 .5 .8) (-28 -22 -22) (28 22 22)
+
+An antenna
+
+model="models\props\antenna\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna2a (0 .5 .8) (-26 -30 -22) (26 30 22)
+
+An antenna
+
+model="models\props\ant2a\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna3a (0 .5 .8) (-14 -2 -22) (14 2 22)
+
+An antenna
+
+model="models\props\ant3a\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna1b (0 .5 .8) (-41 -33 -32) (41 33 32)
+
+An antenna
+
+model="models\props\ant1b\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna2b (0 .5 .8) (-38 -45 -32) (38 45 32)
+
+An antenna
+
+model="models\props\ant2b\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna3b (0 .5 .8) (-21 -3 -33) (21 3 33)
+
+An antenna
+
+model="models\props\ant3b\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna1c (0 .5 .8) (-55 -44 -43) (55 44 43)
+
+An antenna
+
+model="models\props\ant1c\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna2c (0 .5 .8) (-50 -60 -43) (60 50 43)
+
+An antenna
+
+model="models\props\ant2c\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_antenna3c (0 .5 .8) (-28 -3 -44) (28 3 44)
+
+An antenna
+
+model="models\props\ant3c\antenna.mdx"
+skin="models\props\antenna\antenna.pcx"
+*/
+
+/*QUAKED props_fan (0 .5 .8) (-8 -12 -16) (8 12 16)
+
+A fan
+
+model="models\props\fan\tris.md2"
+*/
+
+/*QUAKED props_aircon (0 .5 .8) (-16 -16 -24) (16 16 24)
+
+A cool box deluxe
+
+model="models\props\aircon\tris.md2"
+*/
+
+/*QUAKED props_phone (0 .5 .8) (-8 -8 -6) (8 8 6)
+
+A phone (telephone)
+
+model="models\props\phone\tris.md2"
+*/
+
+/*QUAKED props_tablesetA (0 .5 .8) (-26 -27 -6) (26 27 6)
+
+Card-shark table setting
+
+model="models\props\tablesets\set.mdx"
+skin="models\props\tablesets\card_skin.pcx"
+*/
+
+/*QUAKED props_radio (0 .5 .8) (-8 -12 -8) (8 12 8)
+
+A radio that will take damage and activate triggers on destruction
+
+"health" - hit points (25 default)
+
+model="models\props\radio\tris.md2" unless you specify a "type"
+Assault 2 , specify a "type" and that model will be used instead.
+Assault 2 , Example: type models/props/radio/radio.md2
+*/
+
+/*QUAKED elements_raincloud (0 .5 .8) ?
+Snow falls from this invisable cloud at random points   
+
+center of cloud to ground trace determines the drop fall distance
+
+cloud can be any recatangle size
+  
+fxdensity - total number of drops in the sky 1 - 1000 (default 400) 
+
+firetype - type of drops, 0 = rain 1 = drip
+*/
+							
+/*QUAKED elements_snowcloud (0 .5 .8) ?
+Snow falls from this invisable cloud at random points   
+
+center of cloud to ground trace determines the flake fall distance
+
+cloud can be any recatangle size
+  
+fxdensity - total number of flakes in the sky 1 - 1000 (default 400) 
+*/
+
+/*QUAKED props_trashcanA (0 .5 .8) (-16 -16 -21) (16 16 21) ? NON_MOVEABLE
+Trash can you can push.  You can override its mass (400),
+health (10).
+
+"item" - Item to spawn on destruction 
+
+model="models\props\t_can\"
+*/
+
+/*QUAKED props_crate_bust_32 (0 .5 .8) (-16 -16 -16) (16 16 16) ? NON_MOVEABLE TYPE_WOOD TYPE_WOOD2 TYPE_METAL TYPE_CARDBOARD
+Crate can bust and you can push
+health (10).
+
+"item" - Item to spawn on destruction 
+
+model="models\props\crate\stillcrate32_1.mdx"
+*/
+
+/*QUAKED props_crate_bust_48 (0 .5 .8) (-24 -24 -24) (24 24 24) ? NON_MOVEABLE TYPE_WOOD TYPE_WOOD2 X TYPE_CARDBOARD
+Crate can bust and you can push
+health (10).
+
+"item" - Item to spawn on destruction 
+
+model="models\props\crate\stillcrate48_1.mdx"
+*/
+
+/*QUAKED props_crate_bust_64 (0 .5 .8) (-32 -32 -32) (32 32 32) ? X TYPE_WOOD TYPE_WOOD2 X TYPE_CARDBOARD 
+Crate you can bust
+health (10).
+
+"item" - Item to spawn on destruction 
+
+model="models\props\crate\stillcrate64_1.mdx"
+*/
+
+/*QUAKED props_ammocrate_bust (0 .5 .8) (-32 -16 -8) (32 16 8)
+Crate you may bust.
+health (10).
+
+"item" - Item to spawn on destruction if hit by pipe or crowbar 
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\crate\tris.md2"
+skin="models\props\crate\exp_crate.tga"
+*/
+
+/*QUAKED props_trashcan_fall (0 .5 .8) (-16 -16 -21) (16 16 21)
+Trash can you can push.  You can override its mass (100),
+health (80).
+
+"item" - Item to spawn on push down or destruction 
+
+model="models\props\t_can2\"
+*/
+
+/*QUAKED light_fire_esm (1 0 0) (-8 -8 -8) (8 8 8) X X X DYNAMIC
+Cool fire extra-small 
+
+alphalevel 1 - 10 (default 5) 
+*/
+
+/*QUAKED light_fire_sm (1 0 0) (-16 -16 -16) (16 16 16) X X X DYNAMIC
+Cool fire small
+
+alphalevel 1 - 10 (default 5)
+*/
+
+/*QUAKED light_fire_med (1 0 0) (-24 -24 -24) (24 24 24) X X X DYNAMIC
+Cool fire medium
+
+alphalevel 1 - 10 (default 5)
+*/
+
+/*QUAKED light_fire_lg (1 0 0) (-32 -32 -32) (32 32 32) X X X DYNAMIC
+Cool fire large
+
+alphalevel 1 - 10 (default 5)
+*/
+
+/*QUAKED smoke_esm (1 0 0) (-8 -8 -8) (8 8 8) 
+Cool smoke extra-small
+
+alphalevel 1 - 10 (default 4)
+*/
+
+/*QUAKED smoke_sm (1 0 0) (-16 -16 -16) (16 16 16) 
+Cool smoke small
+
+alphalevel 1 - 10 (default 4)
+*/
+
+/*QUAKED smoke_med (1 0 0) (-24 -24 -24) (24 24 24) 
+Cool smoke medium
+
+alphalevel 1 - 10 (default 4)
+*/
+
+/*QUAKED smoke_lg (1 0 0) (-32 -32 -32) (32 32 32) 
+Cool smoke large
+
+alphalevel 1 - 10 (default 4)
+*/
+
+/*QUAKED cast_buma (1 .5 0) (-30 -16 -25) (31 43 13)
+Bum 
+model = "models\actors\bum_seg"
+*/
+
+/*QUAKED cast_bumb (1 .5 0) (-30 -16 -25) (31 43 13)
+Bum 
+model = "models\actors\bum_seg"
+*/
+
+/*QUAKED props_chair (0 .5 .8) (-11 -13 -26) (11 13 26)
+
+A chair (with no bounding box)
+
+model="models\props\chair\chair.mdx"
+skin="models\props\chair\chair1.tga"
+*/
+
+/*QUAKED props2_chair_push (0 .5 .8) (-16 -16 -26) (16 16 26)
+
+A pushable chair
+
+"health" - default 25
+
+model="models\props\chair\chair.mdx"
+skin="models\props\chair\chair1.tga"
+*/
+
+/*QUAKED props_extinguisherA (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+An extingusher
+
+model="models\pu_icon\exting\ext1.md2"
+
+dmg - damage an exploding extinguisher causes (default 25)
+*/
+
+/*QUAKED props_extinguisherB (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+An extingusher
+
+dmg - damage an exploding extinguisher causes (default 25)
+
+model="models\pu_icon\exting\ext2.md2"
+*/
+
+/*QUAKED props_motorcycle (0 .5 .8) (-60 -20 -26) (60 20 26)
+
+A motorcycle
+
+model="models\props\moto\moto.mdx;models\props\moto\chrome.mdx"
+skin="models\props\moto\motoskin.tga;models\props\moto\motoskin_a.tga"
+*/
+
+/*QUAKED props_motorcycle_run (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A motorcycle speeding away
+
+model="models\props\ride\moto.mdx"
+*/
+
+/*QUAKED props_motorcycle_runaway (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A motorcycle riding in place
+
+model="models\props\runaway\moto.mdx"
+*/
+
+/*QUAKED props_shelf (0 .5 .8) (-40 -85 -51) (40 85 51)
+
+The pawn shop shelf 
+
+model="models\props\shelf\flametank.mdx;models\props\shelf\pistol.mdx;models\props\shelf\shotgun.mdx;models\props\shelf\tomgun.mdx;models\props\shelf\sshell.mdx"
+*/
+
+/*QUAKED props_mattressA (0 .5 .8) (-36 -28 -38) (36 28 38)
+model="models/props/mattress/matt.md2"
+A mattress
+
+*/
+
+/*QUAKED props_mattressB (0 .5 .8) (-8 -34-38) (8 34 38)
+A mattress
+model="models/props/mattress/matt2.md2"
+*/
+
+/*QUAKED props_mattressC (0 .5 .8) (-34 -38 -8) (34 38 8)
+A mattress
+model="models/props/mattress/matt3.md2"
+*/
+
+/*QUAKED props_tv (0 .5 .8) (-8 -16 -22) (8 16 22)
+
+A television
+
+model="models\props\tv\tv.md2"
+*/
+
+/*QUAKED props_steam_machine (0 .5 .8) (-8 -8 -8) (8 8 8)
+
+A real steam producer  
+
+"alphalevel" 1 - 10 (default 2)  
+"firetype" length of steam 1 - 100 (default 15)
+"thudsurf" start size of steam 1 - 10 (default 5)
+"thudsnd" end size steam increase 1 - 10 (default 5)
+"deadticks" number of steam puffs per length element 1- 10 (default 2)
+*/
+
+/*QUAKED props_trash (0 .5 .8) (-64 -64 -4) (64 64 4)
+
+Some trash
+
+"option" 1 will set these to turn off when props are set to off.
+
+model="models\props\trash\tris.md2"
+*/
+
+/*QUAKED props_wall_fall (0 .5 .8) (-64 -26 -48) (64 26 48)
+
+A wall that falls when trigered  
+
+model="models\props\wall\wall.mdx"
+*/
+
+/*QUAKED props_trashbottle (0 .5 .8) (-8 -2 -2) (8 2 2)
+
+Some trash
+
+model="models\props\trashbottle\tris.md2"
+*/
+
+/*QUAKED props_trashpaper (0 .5 .8) (-18 -18 -2) (18 18 2)
+
+Some trash
+
+model="models\props\trashpaper\tris.md2"
+*/
+
+/*QUAKED props_trashwall (0 .5 .8) (-70 -25 -10) (70 25 10)
+
+Some trash
+
+model="models\props\trashwall\tris.md2"
+*/
+
+/*QUAKED props_trashcorner (0 .5 .8) (-40 -40 -8) (40 40 8)
+
+Some trash
+
+model="models\props\trashcorner\tris.md2"
+*/
+
+/*QUAKED props_trashbottle_vert (0 .5 .8) (-2 -2 -8) (2 2 8)
+
+A vertical trash bottle
+
+model="models\props\trashbottle_vert\tris.md2"
+*/
+
+/*QUAKED props_shelf_fall (0 .5 .8) (-65 -13 -51) (65 13 51)
+
+An falling shelf
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\shelf\shelf.mdx;models\props\shelf\top.mdx"
+*/
+
+/*QUAKED props_shelfB_fall (0 .5 .8) (-65 -13 -51) (65 13 51)
+
+Another falling shelf
+
+model="models\props\shelftwo\shelf.mdx;models\props\shelftwo\top.mdx"
+*/
+
+/*QUAKED props_rat (0 .5 .8) (-12 -12 0) (12 12 10)
+
+A rat
+
+"dmg" - rat bite damage (2 default)
+
+"health" - heath of the rat (10 default)
+
+*/
+
+/*QUAKED props_rat_trigger (0 .5 .8) (-12 -12 0) (12 12 10)
+
+A rat that is spawned when triggered
+
+"dmg" - rat bite damage (2 default)
+
+"health" - heath of the rat (10 default)
+
+"targetname" - target ID
+*/
+
+/*QUAKED props_rat_spawner (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+Base rat spawner
+
+ props_rat_spawner_node  determine possible spawn point
+
+ "dmg" - rat bite damage (2 default)
+
+ "health" - heath of the rat (10 default)
+
+ "deadticks" - total number of rats in level from spawner at a time (default 5)
+
+ "target" - ID string for spawner 
+*/
+
+/*QUAKED props_rat_spawner_node (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+ Possible rat spawn point from props_rat_spawner
+
+ "targetname" - ID string for spawner 	
+*/
+
+/*QUAKED props_blimp (0 .5 .8) (-140 -40 -58) (140 40 58)
+
+A path corner blimp - trigger to make visable and start moving
+
+"speed" speed of the blimp (20 default)
+"target" target path corner ID
+
+model="models\props\blimp\tris.md2"
+*/
+
+/*QUAKED props_roof_vent (0 .5 .8) (-32 -36 -48) (32 36 48)
+
+A moving roof vent
+
+"health" - hit points (25 default)
+
+model="models\props\roof_vent\tris.md2"
+*/
+
+/*QUAKED props2_truck_die (0 .5 .8)  (-61 -148 -78) (61 148 78)
+
+A truck that becomes toast
+
+model="models\props\truck\box.mdx;models\props\truck\tires.mdx;models\props\truck\wood.mdx;models\props\truck\c4.mdx;models\props\truck\m26y.mdx;models\props\truck\mn3.mdx;models\props\truck\mp1a.mdx;models\props\truck\v1a.mdx;models\props\truck\v1b.mdx;models\props\truck\v1c.mdx;"
+*/
+
+/*QUAKED props_cola_machine (0 .5 .8) (-16 -24 -32) (24 32 32)
+
+A cola machine
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\vending_mach\tris.md2"
+*/
+
+/*QUAKED props_cig_machine (0 .5 .8) (-16 -24 -32) (16 24 32)
+
+A cigarette machine
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\cigmachine\tris.md2"
+*/
+
+/*QUAKED props2_barrels_fallA (0 .5 .8) (-69 -33 -49) (69 33 49)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\barl1\barrels.mdx;models\props\barl1\tops.mdx"
+*/
+
+/*QUAKED props2_barrels_fallB (0 .5 .8) (-33 -81 -49) (33 81 49)
+
+Another set of barrels that  you can trigger to fall  
+
+model="models\props\barl2\barrels2.mdx;models\props\barl2\tops2.mdx"
+*/
+
+/*QUAKED props2_clubcouch (0 .5 .8) (-32 -64 -24) (32 64 24)
+
+A couch
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\clubcouch\"
+*/
+
+/*QUAKED props2_clubchair (0 .5 .8) (-32 -32 -24) (32 32 24)
+
+A pushable chair
+
+model="models\props\clubchair\"
+*/
+
+/*QUAKED props2_vaseA (0 .5 .8) (-16 -16 -24) (16 16 24)
+
+A vase
+
+model="models\props\vase1\"
+*/
+
+/*QUAKED props2_vaseB (0 .5 .8) (-16 -16 -24) (16 16 24)
+
+A vase
+
+model="models\props\vase2\"
+*/
+
+/*QUAKED props2_chair_conf (0 .5 .8) (-24 -24 -32) (24 24 32)
+
+An pushable chair
+
+model="models\props\confchair\"
+*/
+
+/*QUAKED props2_shelf_metal_A_fall (0 .5 .8) (-60 -20 -56) (60 20 66)
+
+A falling metal shelf
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\shelfmetal1\shelf1.mdx;models\props\shelfmetal1\shelf2.mdx;models/props/shelfmetal1/barreltops.mdx;models/props/shelfmetal1/tanktops.mdx"
+*/
+
+/*QUAKED props2_shelf_metal_B_fall (0 .5 .8) (-60 -20 -56) (60 20 66)
+
+Another falling metal shelf
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\shelfmetal2\shelf1.mdx;models\props\shelfmetal2\shelf2.mdx;models/props/shelfmetal2/barreltops.mdx;models/props/shelfmetal2/tanktops.mdx"
+*/
+
+/*QUAKED props2_deadguy (0 .5 .8) (-40 -27 -9) (40 27 9)
+
+An dead guy body you can shoot
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+"health" - pre-gib hit points for the dead body (50 default)
+
+model="models\props\deadguy\body.mdx;models\props\deadguy\head.mdx;models\props\deadguy\legs.mdx"
+*/
+
+/*QUAKED props2_deadguy_underwater (0 .5 .8) (-17 -50 0) (13 30 88)
+
+An underwater dead guy in cement body you can shoot
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+"health" - pre-gib hit points for the dead body (50 default)
+
+model="models\props\cementguy\body.mdx;models\props\cementguy\head.mdx;models\props\cementguy\legs.mdx"
+*/
+
+/*QUAKED props2_deadgal_headless (0 .5 .8) (-32 -26 -7) (32 26 7)
+
+A female dead body you can shoot that has no head
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+"health" - pre-gib hit points for the dead body (50 default)
+
+model="models\props\dead_fem\body.mdx;models\props\dead_fem\legs.mdx"
+*/
+
+/*QUAKED props2_flag (0 .5 .8) (-47 -6 -100) (47 6 100) ? FLAG1 FLAG2 FLAG3
+
+A flag
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\flag\flag1.md2"
+*/
+
+/*QUAKED props2_fish (0 .5 .8) (-12 -12 0) (12 12 10)
+
+A fish
+
+"dmg" - fish bite damage (2 default)
+
+"health" - heath of the fish (10 default)
+
+*/
+
+/*QUAKED props2_fish_trigger (0 .5 .8) (-12 -12 0) (12 12 10)
+
+A fish that is spawned when triggered
+
+"dmg" - fish bite damage (2 default)
+
+"health" - heath of the fish (10 default)
+
+"targetname" - target ID
+*/
+
+/*QUAKED props2_fish_spawner (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+Base fish spawner
+
+ props2_fish_spawner_node  determine possible spawn point
+
+ "dmg" - fish bite damage (2 default)
+
+ "health" - heath of the fish (10 default)
+
+ "deadticks" - total number of fishs in level from spawner at a time (default 5)
+
+ "target" - ID string for spawner 
+*/
+
+/*QUAKED props2_fish_spawner_node (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+ Possible fish spawn point from props2_fish_spawner
+
+ "targetname" - ID string for spawner 	
+*/
+
+/*QUAKED props2_wall_fish (0 .5 .8) (-2 -40 -12) (2 40 12)
+
+A fish on the wall 
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\fish\tris.md2"
+*/
+
+/*QUAKED props2_barrels_fall_ST (0 .5 .8) (-89 -48 -56) (89 48 56)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\barl_steel\barrels.mdx;models\props\barl_steel\tops.mdx;models\props\barl_steel\door.mdx"
+*/
+
+/*QUAKED props2_sign (0 .5 .8) (-4 -44 -44) (4 44 44)
+
+A sign  
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\sign\sign.mdx;models\props\sign\bar.mdx;models\props\sign\chain.mdx"
+*/
+
+/*QUAKED props2_lighthouse_beam (0 .5 .8) (-16 -16 -88) (16 16 -40)
+
+A light house light beam that rotates
+
+-482 -25 -88, -85 25 -40
+
+"reactdelay" light distance from center (default 40)
+
+model="models\props\litecone\litecone.mdx"
+*/
+
+/*QUAKED props2_boat (0 .5 .8) (-80 -160 -38) (80 160 38)
+
+A boat  
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\boat\boat.mdx;models\props\boat\glass.mdx"
+*/
+
+/*QUAKED props2_buoy (0 .5 .8) (-41 -41 -75) (41 41 75)
+
+A buoy
+
+model="models\props\buoy\buoy.mdx"
+*/
+
+/*QUAKED props2_buoy_side (1 0 0) (-81 -55 -64) (81 55 64)
+
+A buoy on it's side
+
+model="models\props\buoyside\buoy.mdx"
+*/
+
+/*QUAKED props2_buoy_animate (0 .5 .8) (-41 -41 -75) (41 41 75)
+
+An animated buoy
+
+model="models\props\buoya\buoy.mdx"
+*/
+
+/*QUAKED props2_gargoyle (0 .5 .8) (-47 -22 -50) (47 22 50)
+
+A gargoyle
+
+model="models\props\gargoyle\"
+*/
+
+/*QUAKED props2_clothesline (0 .5 .8) (-4 -85 -25) (4 85 25) ? DONOTMOVE
+
+A clothes line
+
+model="models\props\clothes\"
+*/
+
+/*QUAKED props2_plant_XL (0 .5 .8) (-50 -46 -53) (50 46 53)
+
+A plant
+
+model="models\props\plants\plant_xl.md2"
+*/
+
+/*QUAKED props2_plant_SM (0 .5 .8) (-12 -9 -20) (12 9 20)
+
+A plant
+
+model="models\props\plants\plant_sm.md2"
+*/
+
+/*QUAKED props2_lunch (0 .5 .8) (-10 -7 -5) (10 7 5)
+
+A lunch
+
+model="models\props\lunch_set\tris.md2"
+*/
+
+/*QUAKED props2_ashtray (0 .5 .8) (-12 -18 -4) (12 18 4)
+
+An ashtray
+
+model="models\props\ashtray_set\tris.md2"
+*/
+
+/*QUAKED props2_boatphone (0 .5 .8) (-5 -9 -12) (5 9 12)
+
+A boat phone
+
+model="models\props\boatphone\tris.md2"
+*/
+
+/*QUAKED props2_plant_bush (0 .5 .8) (-9 -11 -32) (9 11 32)
+
+A bush like plant
+
+model="models\props\bush\tris.md2"
+*/
+
+/*QUAKED props2_boat_animate (0 .5 .8) (-80 -160 -38) (80 160 38)
+
+An animated boat
+
+model="models\props\boata\boat.mdx"
+*/
+
+/*QUAKED props2_helicopter_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A helicopter and actor that animate when trigered  
+
+model="models\props\helicopter\helicopter.mdx;models\props\helicopter\rotor.mdx;models\props\helicopter\body.mdx;models\props\helicopter\foot.mdx;models\props\helicopter\legs.mdx;models\props\helicopter\head.mdx"
+*/
+
+/*QUAKED props2_car_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A car and actors that animate when trigered  
+
+model="models\props\cars\car.mdx;models\props\cars\legs_boss.mdx;models\props\cars\body_boss.mdx;models\props\cars\head_boss.mdx;models\props\cars\legs_chick.mdx;models\props\cars\body_chick.mdx;models\props\cars\head_chick.mdx"
+*/
+
+/*QUAKED props2_car_topup (0 .5 .8) (-50 -102 -35) (50 102 35)
+
+A car with top up
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\car\car_up.md2"
+*/
+
+/*QUAKED props2_car_topdown (0 .5 .8) (-50 -102 -33) (50 102 33)
+
+A car with top down
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\car\car_td.md2"
+*/
+
+/*QUAKED props2_plant_fern (0 .5 .8) (-50 -46 -40) (50 46 40)
+
+A fern plant
+
+model="models\props\fern\tris.md2"
+*/
+
+/*QUAKED props2_pinball_machine (0 .5 .8) (-42 -18 -38) (42 18 38) ? PINNUM1 PINNUM2 PINNUM3
+
+A pinball machine  
+
+The bounding box can be rotated in angles of 90 deg and block properly
+
+model="models\props\pinball\pinball_m.mdx;models\props\pinball\glass.mdx;models\props\pinball\ball.mdx"
+*/
+
+/*QUAKED props2_barrels_PV_A (0 .5 .8) (-90 -32 -48) (90 32 48)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\pv_barl1\barrel_v4last.mdx;models\props\pv_barl1\barrel_v2.mdx;models\props\pv_barl1\barrel_v4.mdx;models\props\pv_barl1\top_barrel_v2.mdx;models\props\pv_barl1\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props2_barrels_PV_B (0 .5 .8) (-17 -77 -49) (17 77 49)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\pv_barl7\barrel_v2.mdx;models\props\pv_barl7\barrel_v4.mdx;models\props\pv_barl7\top_barrel_v2.mdx;models\props\pv_barl7\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props2_barrels_PV_C (0 .5 .8) (-68 -50 -48) (68 50 48)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\pv_barl3\barrel_v2.mdx;models\props\pv_barl3\barrel_v2.mdx;models\props\pv_barl3\barrel_v4.mdx;models\props\pv_barl3\top_barrel_v2.mdx;models\props\pv_barl3\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props2_barrels_PV_D (0 .5 .8) (-20 -52 -48) (20 52 48)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\pv_barl4\barrel_v2.mdx;models\props\pv_barl4\barrel_v4.mdx;models\props\pv_barl4\top_barrel_v2.mdx;models\props\pv_barl4\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props2_barrels_PV_E (0 .5 .8) (-24 -64 -48) (24 64 48)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\pv_barl5\barrel_v2.mdx;models\props\pv_barl5\barrel_v4.mdx;models\props\pv_barl5\top_barrel_v2.mdx;models\props\pv_barl5\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props2_barrels_PV_F (0 .5 .8) (-20 -32 -24) (20 32 24)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\pv_barl6\barrel_v2.mdx;models\props\pv_barl6\top_barrel_v2.mdx"
+*/
+
+/*QUAKED props2_air_train (0 .5 .8) (-65 -259 -129) (65 255 139)
+
+An an train that animates when trigger  
+
+model="models\props\air_train\beam.mdx;models\props\air_train\frontfront.mdx;models\props\air_train\bottom.mdx;models\props\air_train\frontside.mdx;models\props\air_train\middle.mdx;models\props\air_train\middle2.mdx;models\props\air_train\propeler.mdx;models\props\air_train\top.mdx"
+
+*/
+
+/*QUAKED props3_dead_louie (0 .5 .8) (-40 -48 -14) (40 48 14)
+
+An dead louie body you can shoot
+
+"health" - pre-gib hit points for the dead body (50 default)
+
+model="models\props\louie\body.mdx;models\props\louie\head.mdx;models\props\louie\legs.mdx"
+*/
+
+/*QUAKED props3_cut_boss_player_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A boss and player that animate when trigered  
+
+model="models\props\player\bodyP.mdx;models\props\player\legsP.mdx;models\props\player\headP.mdx;models\props\boss\body_boss.mdx;models\props\boss\legs_boss.mdx;models\props\boss\head_boss.mdx"
+*/
+
+/*QUAKED props3_deco_fixture (0 .5 .8) (-32 -8 -58) (32 8 58)
+
+A deco fixture
+
+model="models\props\deco_fixture\deco_fixture.mdx"
+*/
+
+/*QUAKED props3_cut_boss_chick_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A boss and chick that animate on a balcony when trigered  
+
+model="models\props\cutbc\body_chick.mdx;models\props\cutbc\legs_chick.mdx;models\props\cutbc\head_chick.mdx;models\props\cutbc\body.mdx;models\props\cutbc\legs.mdx;models\props\cutbc\head.mdx;models\props\cutbc\cigar.mdx"
+*/
+
+/*QUAKED props3_cut_train_run_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A guy that likes to run to trains  
+
+model="models\props\train_jump\bodyP.mdx;models\props\train_jump\legsP.mdx;models\props\train_jump\headP.mdx;
+*/
+
+/*QUAKED props3_cut_A_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+A guy sitting on a chair  
+
+model="models\props\kpcut1\body.mdx;models\props\kpcut1\legs.mdx;models\props\kpcut1\head.mdx;
+*/
+
+/*QUAKED props3_cut_B_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+model="models\props\kpcut2\body.mdx;models\props\kpcut2\legs.mdx;models\props\kpcut2\head.mdx;
+*/
+
+/*QUAKED props3_cut_C_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+model="models\props\kpcut3\body.mdx;models\props\kpcut3\legs.mdx;models\props\kpcut3\head.mdx;
+*/
+
+/*QUAKED props3_cut_D_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+model="models\props\kpcut4\body.mdx;models\props\kpcut4\legs.mdx;models\props\kpcut4\head.mdx;
+*/
+
+/*QUAKED props3_cash_counter_animate (0 .5 .8) (-12 -14 -8) (12 18 7)
+
+A cash counter machine that animates when triggered  
+
+model="models\props\bill_counter\cashstack.mdx;models\props\bill_counter\numbers.mdx;models\props\bill_counter\machine.mdx;
+*/
+
+/*QUAKED props3_decanter (0 .5 .8) (-3 -5 -6) (3 5 6)
+
+A decanter  
+
+model="models\props\decanter\solid.mdx;models\props\decanter\glass.mdx"
+*/
+
+/*QUAKED props3_whiskey_glass (0 .5 .8) (-2 -2 -2) (2 2 2)
+
+A decanter  
+
+model="models\props\whiskeyglass\solid.mdx;models\props\whiskeyglass\glass.mdx"
+*/
+
+/*QUAKED props3_barrels_fall_nikki_A (0 .5 .8) (-44 -60 -49) (44 60 49)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\nikki1\barrel_v4.mdx;models\props\nikki1\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props3_barrels_fall_nikki_B (0 .5 .8) (-24 -48 -24) (24 48 24)
+
+A set of barrels that you can trigger to fall  
+
+model="models\props\nikki2\barrel_v4.mdx;models\props\nikki2\top_barrel_v4.mdx"
+*/
+
+/*QUAKED props3_cut_run_to_car_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+An actor running to a car  
+
+model="models\props\run_to_car\body_boss.mdx;models\props\run_to_car\legs_boss.mdx;models\props\run_to_car\head_boss.mdx"
+*/
+
+/*QUAKED props3_cut_final_animate (0 .5 .8) (-16 -16 -16) (16 16 16)
+
+The final cut scene
+
+model="models\props\finale\body_bossf.mdx;models\props\finale\legs_bossf.mdx;models\props\finale\head_bossf.mdx;models\props\finale\cigarf.mdx"
+*/
+
+/*QUAKED props3_cash (0 .5 .8) (-12 -11 -5) (12 11 5)
+
+Some cash
+
+model="models\props\cash\cashstack.mdx"
+*/
+
+/*QUAKED props3_cut_truck_driver (0 .5 .8) (-67 -16 -58) (0 17 8)
+
+The driver driving a truck
+
+model="models\props\driver\body_driver.mdx;models\props\driver\legs_driver.mdx;models\props\driver\head_driver.mdx;models\props\driver\wheel.mdx"
+*/
+
+/*QUAKED func_group (0 0 0) ?
+Used to group brushes together just for editor convenience.
+*/
+
+/*QUAKED func_areaportal (0 0 0) ?
+
+This is a non-visible object that divides the world into
+areas that are seperated when this portal is not activated.
+Usually enclosed in the middle of a door.
+*/
+
+/*QUAKED path_corner_cast (.5 .3 0) (-16 -16 -24) (16 16 42) TELEPORT AI_FASTWALK UnAI_FASTWALK AI_RUN_LIKE_HELL UnAI_RUN_LIKE_HELL
+Target: next path corner
+Scriptname: hard-coded script to call when reaching this marker
+Pathtarget: gets used when an entity that has
+	this path_corner targeted touches it
+	Could be used to trigger a button, or a character
+Combattarget: when the cast reaches this marker,
+	they'll take on this combattarget
+
+"name" give your path_corner_cast a "name" that indicates the .wav file
+to be played when your cast hits this corner.  example:
+"name" actors/male/lamont/lookinat1.wav
+be sure to include the .wav or it wont work.
+
+ASSAULT2: give your path_corner_cast a "scriptname" and 
+record gestures your cast can play back when he touches this corner,
+1 command per line.
+Maximum 16 lines per script. For Example:
+
+scriptname = scripts/hogie.kps
+And that file could read something like this:
+
+thug_move_handwave
+wait
+wait
+play actors/male/kroker/getout.wav
+thug_move_up_yours
+wait
+wait
+play actors/male/moker/fight3.wav
+thug_move_crch_grab
+wait
+wait
+thug_move_whoa
+
+=Chief= no "wait" value is required here on the path_corner_cast itself
+because the assault.dll counts the number of lines in the script
+(minus any play commands) and automatically sets the "wait" value 
+to that number plus 1.
+*/
+
+/*QUAKED path_corner (.5 .3 0) (-8 -8 -8) (8 8 8) TELEPORT
+NOTE: Use path_corner_cast for character path's
+ASSAULT 2: If using path_corner to trigger target_blaster set "moral" and "order"
+"order" sets the fixed aim direction YAW of your target_blaster
+"moral" sets the fixed aim direction PITCH of your target_blaster
+Target: next path corner
+Pathtarget: gets used when an entity that has
+	this path_corner targeted touches it
+
+*/
+
+/*QUAKED info_null (0 0.5 0) (-4 -4 -4) (4 4 4)
+Used as a positional target for spotlights, etc.
+*/
+
+/*QUAKED info_notnull (0 0.5 0) (-4 -4 -4) (4 4 4)
+Used as a positional target for lightning.
+*/
+
+/*QUAKED junior (0 1 0) (-8 -8 -8) (8 8 8) 
+Used for dynamic lighting of characters.
+*/
+
+/*QUAKED lightflare (0 1 0) (-2 -2 -2) (2 2 2) START_OFF FLARE  NORESIZE DYNAMIC
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+*/
+/*QUAKED light (0 1 0) (-8 -8 -8) (8 8 8) START_OFF FLARE NORESIZE DYNAMIC
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+style for flashing effects
+1. fire flicker         11. black fade pulse
+2. slow strong fade     12. fire flicker 3
+3. candle               13. flourescent flicker 3
+4. fast strobe          14. flourescent flicker 4
+5. gentle pulse         15. realistic fade 
+6. fire flicker 2       16. realistic fade 2
+7. candle 2             17. slow strong strobe 2
+8. candle 3             18. three cycle strobe 1
+9. slow strong strobe   19. three cycle strobe 2
+10. black fade pulse    20. three cycle strobe 3
+*/
+/*QUAKED light_bulb (1 1 1) (-2 -2 -5) (2 2 5) START_OFF FLARE NORESIZE DYNAMIC
+
+A bulb that outputs light
+
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+
+model="models\props\light\tris.md2"
+*/
+
+/*QUAKED light_sconce (1 1 1) (-4 -4 -8) (4 4 8) START_OFF FLARE NORESIZE DYNAMIC LBLUE LGREEN LRED LYELLOW
+
+A cage light model
+
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+  
+model="models\props\sconce\light.md2"
+*/
+
+/*QUAKED light_deco_sconce (1 1 1) (-8 -8 -12) (8 8 12) START_OFF FLARE NORESIZE DYNAMIC
+
+A deco sconce
+
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+  
+model="models\props\decosconce\tris.md2"
+*/
+
+/*QUAKED light_chandelier (1 1 1) (-36 -34 -32) (36 34 32) START_OFF FLARE NORESIZE DYNAMIC
+
+A chandelier
+
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+  
+model="models\props\chandelier\tris.md2"
+*/
+
+/*QUAKED light_pendant (1 1 1) (-16 -16 -4) (16 16 4) START_OFF FLARE NORESIZE DYNAMIC
+
+A pendant light
+
+Non-displayed light.
+Default light value is 300.
+Default style is 0.
+If targeted, will toggle between on and off.
+Default _cone value is 10 (used to set size of light for spotlights)
+movedir will be the color of the flare
+health is size for lightflare
+dmg will specify the flare type
+FLARE_WHITE       0
+FLARE_SUN		1
+FLARE_AMBER		2
+FLARE_RED		3
+FLARE_BLUE		4
+FLARE_GREEN		5
+  
+model="models\props\pendant\tris.md2"
+*/
+
+/*QUAKED func_wall (0 .5 .8) ? TRIGGER_SPAWN TOGGLE START_ON ANIMATED ANIMATED_FAST SURF2_ALPHA
+This is just a solid wall if not inhibited
+
+TRIGGER_SPAWN	the wall will not be present until triggered
+				it will then blink in to existance; it will
+				kill anything that was in it's way
+
+TOGGLE			only valid for TRIGGER_SPAWN walls
+				this allows the wall to be turned on and off
+
+START_ON		only valid for TRIGGER_SPAWN walls
+				the wall will initially be present
+*/
+/*QUAKED func_object (0 .5 .8) ? TRIGGER_SPAWN ANIMATED ANIMATED_FAST
+This is solid bmodel that will fall if it's support it removed.
+*/
+/*QUAKED func_explosive (0 .5 .8) ? Trigger_Spawn ANIMATED ANIMATED_FAST SURF2_ALPHA
+Any brush that you want to explode or break apart.  If you want an
+explosion, set dmg and it will do a radius explosion of that amount
+at the center of the bursh.
+
+If targeted it will not be shootable.
+
+health defaults to 100.
+
+type - type of debris ("glass", "wood" or "metal")
+ type default is "glass"
+
+mass defaults to 75.  This determines how much debris is emitted when
+it explodes.  You get one large chunk per 100 of mass (up to 8) and
+one small chunk per 25 of mass (up to 16).  So 800 gives the most.
+
+"dmg"  how much radius damage should be done, defaults to 0
+
+"fxdensity" size of explosion 1 - 100 (default is 10)
+*/
+/*QUAKED target_character (0 0 1) ?
+used with target_string (must be on same "team")
+"count" is position in the string (starts at 1)
+*/
+
+/*QUAKED target_string (0 0 1) (-8 -8 -8) (8 8 8)
+*/
+/*QUAKED func_clock (0 0 1) (-8 -8 -8) (8 8 8) TIMER_UP TIMER_DOWN START_OFF MULTI_USE
+target a target_string with this
+
+The default is to be a time of day clock
+
+TIMER_UP and TIMER_DOWN run for "count" seconds and the fire "pathtarget"
+If START_OFF, this entity must be used before it starts
+
+"style"		0 "xx"
+			1 "xx:xx"
+			2 "xx:xx:xx"
+*/
+/*QUAKED misc_teleporter (1 0 0) (-32 -32 -24) (32 32 -16)
+Stepping onto this disc will teleport players to the targeted misc_teleporter_dest object.
+*/
+/*QUAKED misc_teleporter_dest (1 0 0) (-32 -32 -24) (32 32 -16)
+Point teleporters at these.
+*/
+/*QUAKED misc_fire (1 0 0) (-16 -16 -16) (16 16 16) ALPHA1 ALPHA2 ALPHA4 ALPHA6 ALPHA8 
+ALPHA1 = 0.1
+ALPHA8 = 0.8
+all fire gets scaled down 50 percent
+*/
+/*QUAKED misc_alarm (1 .5 0) (-8 -8 -8) (8 8 8) 
+must be triggered to work
+count is the duration of the alarm ringing default is 60 sec
+*/
+/*QUAKED path_attractor (.4 .3 .8) (-16 -16 -24) (16 16 48)
+When this is placed on the map it will attract actors by name
+from the episodic ai routines
+
+default delay is 10 sec.  
+*/
+/*QUAKED misc_cut_scene (0 0 1) (-16 -16 -16) (16 16 16)
+*/
+/*QUAKED misc_cutscene_trigger (0 0 1) ?
+
+Targets a misc_cutscene_camera
+
+  target - camera to target
+  debugprint - set to 1 to print out camera end position and angles	
+  duration - fade in time.	  
+*/
+/*QUAKED misc_cutscene_camera (0 0 1) (-16 -16 -16) (16 16 16)
+/*QUAKED misc_use_cutscene (.5 .5 .5) (-8 -8 -8) (8 8 8)
+This fixed size trigger targets a misc_cutscene_camera
+
+  target - camera to target
+  debugprint - set to 1 to print out camera end position and angles	
+  duration - fade in time.	  
+*/
+/*QUAKED pawn_o_matic (1 .5 0) (-16 -64 -32) (16 64 32) 
+*/
+/*QUAKED worldspawn (0 0 0) ?
+
+Only used for the world.
+"episode"	Kingpin episode number
+"sky"	environment map name
+"sounds"	music cd track number
+"gravity"	800 is default gravity
+"message"	text to print at user logon
+"fogdensity" fog density for opengl cards
+"fogdensity2" fog density for 3dfx cards
+"fogval" RGB values of fog for opengl cards
+"fogval2" RGB values of fog for 3dfx cards
+
+*/
+/*QUAKED target_speaker (1 0 0) (-8 -8 -8) (8 8 8) looped-on looped-off reliable
+"noise"		wav file to play
+"attenuation"
+-1 = none, send to whole level
+1 = normal fighting sounds
+2 = idle sound level
+3 = ambient sound level
+"volume"	0.0 to 1.0
+
+Normal sounds play each time the target is used.  The reliable flag can be set for crucial voiceovers.
+
+Looped sounds are always atten 3 / vol 1, and the use function toggles it on/off.
+Multiple identical looping sounds will just increase volume without any speed cost.
+*/
+
+/*QUAKED target_explosion (1 0 0) (-8 -8 -8) (8 8 8)
+Spawns an explosion temporary entity when used.
+
+"delay"		wait this long before going off
+"dmg"		how much radius damage should be done, defaults to 0
+"fxdensity" size of explosion 1 - 100 (default is 50)
+"option" ASSAULT 2, option 1 = fireball only. option 2 = fireball and sparks.
+*/
+
+/*QUAKED target_laser (0 .5 .8) (-8 -8 -8) (8 8 8) START_ON LT_BLUE ORANGE BLUE RED DK_BLUE FAT
+When triggered, fires a laser.  You can either set a target
+or a direction. 
+dmg         is damage it will do.(default 2)
+*/
+
+
+/*QUAKED target_changelevel (1 0 0) (-8 -8 -8) (8 8 8)
+Changes level to "map" when fired
+*/
+
+/*QUAKED target_splash (1 0 0) (-8 -8 -8) (8 8 8)
+Creates a particle splash effect when used.
+
+Set "sounds" to one of the following:
+  1) sparks
+  2) blue water
+  3) brown water
+  4) slime
+  5) lava
+  6) blood
+  7) fireworks	
+  8) smoke
+
+FOR SMOKE
+	"alphalevel" 1 - 10 (default 4)
+	"firetype"   smoke size (5 - 32) 5 = extra small
+	   10 = small 24 = med 32 = large (default 24)
+	"deadticks"  life in seconds 1 - 60 (default 6)
+	"fxdensity"  speed of rising smoke 1 - 100  (default 24)
+	"count"      puffs of smoke 1 - 10;  (default 3)
+	"rotate"     X Y Z velocity to project smoke (up is default)
+END SMOKE
+"count"	how many pixels in the splash
+"dmg"	if set, does a radius damage at this location when it splashes
+		useful for lava/sparks
+*/
+/*QUAKED target_spawner (1 0 0) (-8 -8 -8) (8 8 8) 1 2 4 8 16 32 64 128
+Set target to the type of entity you want spawned.
+cast_anything has special code added for ASSAULT 2:
+Any spawnflags you set on the target_spawner will be copied to your
+spawned entity so refer to those entities for info on spawnflag settings.
+Useful for spawning monsters and gibs in the factory levels.
+For cast_anything ASSAULT 2
+	Set "art_skins" on the spawner and they will effect the cast.
+	Set "combattarget" and it will be copied to cast->target.
+	Set "deathtarget" and it will be copied to cast->targetname.
+
+For cast_dog: ASSAULT 2:
+	Set 'dmg' for dogbite damage (default 20).
+	Set 'style' (1-2) Thug=1  Runt=2  (default 2).
+      Set 'cast_group' (default 0 = hates everyone) above 1 teamfriendly.
+	Set 'moral' (default 1)  above one, dog attacks enemy dogs.
+      Set 'skin' (1-2) Black=1  Grey=2
+	Set 'target' "cast_dog"
+	Set 'targetname' "end_game"
+
+For item_watch: ASSAULT 2:
+	Set 'style' 3   MUST BE SET TO 3 or you get a real watch.
+	Set 'dmg' (default 100).
+	Set 'speed' (default 100).
+      Set 'wait' (default 2.0).
+	Set 'target' "item_watch"
+ 
+For monsters:
+	Set direction to the facing you want it to have.
+
+For gibs:
+	Set direction if you want it moving and
+	speed how fast it should be moving otherwise it
+	will just be dropped
+*/
+/*QUAKED target_crosslevel_trigger (.5 .5 .5) (-8 -8 -8) (8 8 8) trigger1 trigger2 trigger3 trigger4 trigger5 trigger6 trigger7 trigger8
+Once this trigger is touched/used, any trigger_crosslevel_target with the same trigger number is automatically used when a level is started within the same unit.  It is OK to check multiple triggers.  Message, delay, target, and killtarget also work.
+*/
+/*QUAKED target_crosslevel_target (.5 .5 .5) (-8 -8 -8) (8 8 8) trigger1 trigger2 trigger3 trigger4 trigger5 trigger6 trigger7 trigger8
+Triggered by a trigger_crosslevel elsewhere within a unit.  If multiple triggers are checked, all must be true.  Delay, target and
+killtarget also work.
+
+"delay"		delay before using targets if the trigger has been activated (default 1)
+*/
+
+/*QUAKED target_lightramp (0 .5 .8) (-8 -8 -8) (8 8 8) TOGGLE
+speed		How many seconds the ramping will take
+message		two letters; starting lightlevel and ending lightlevel
+*/
+
+/*QUAKED target_earthquake (1 0 0) (-8 -8 -8) (8 8 8)
+When triggered, this initiates a level-wide earthquake.
+All players and monsters are affected.
+"speed"		severity of the quake (default:200)
+"count"		duration of the quake (default:5)
+*/
+/*QUAKED trigger_multiple (.5 .5 .5) ? MONSTER NOT_PLAYER TRIGGERED HOGIE_MOVEIT MSG_EVERYONE MSG_SAMETEAM MSG_OTHERTEAM 
+Hogie's Variable sized repeatable trigger.  Must be targeted at one or more entities.
+"wait" : Seconds between triggerings. (.2 default)
+ASSAULT 2: "style" disables use by other team. be sure to set "message"
+ASSAULT 2: select message broadcast mode. (default: activator only)
+MSG_EVERYONE = Broadcasts "message" to every client.  
+MSG_SAMETEAM = Broadcasts "message" to same style team.  
+MSG_OTHERTEAM = Broadcasts "guard_target" text string to opposite style team.
+set "message" to text string, broadcasts to activator and activator's team.
+set "guard_target" to text string you want broadcast to the opposite team.
+If "delay" is set, the trigger waits some time after activating before firing.
+"sounds" 1 = misc/menu1.wav     2 = misc/menu2.wav     3 = misc/menu3.wav
+"sounds" 4 = misc/secret.wav     5 = misc/talk.wav     6 = misc/trigger1.wav
+"sounds" 7 = world/pawnomatic/menubuzz.wav
+"type" path of custom sound file relative to sound directory. 
+*/
+/*QUAKED trigger_key (.5 .5 .5) (-8 -8 -8) (8 8 8)
+A relay trigger that only fires it's targets if player has the proper key.
+Use "item" to specify the required key, for example "key_data_cd"
+*/
+/*QUAKED trigger_once (.5 .5 .5) ? x x TRIGGERED SCENERIC
+Triggers once, then removes itself.
+You must set the key "target" to the name of another object in the level that has a matching "targetname".
+
+If TRIGGERED, this trigger must be triggered before it is live.
+
+sounds
+ 1)	secret
+ 2)	beep beep
+ 3)	large switch
+ 4)
+
+"message"	string to be displayed when triggered
+*/
+/*QUAKED trigger_relay (.5 .5 .5) (-8 -8 -8) (8 8 8)
+This fixed size trigger cannot be touched, it can only be fired by other events.
+*/
+
+/*QUAKED trigger_counter (.5 .5 .5) ? nomessage
+Acts as an intermediary for an action that takes multiple inputs.
+
+If nomessage is not set, t will print "1 more.. " etc when triggered and "sequence complete" when finished.
+
+After the counter has been triggered "count" times (default 2), it will fire all of it's targets and remove itself.
+*/
+
+/*QUAKED trigger_always (.5 .5 .5) (-8 -8 -8) (8 8 8)
+This trigger will always fire.  It is activated by the world.
+*/
+
+/*QUAKED trigger_push (.5 .5 .5) ? PUSH_ONCE PUSH_PLUS PUSH_RAMP
+Pushes the player
+"speed"  defaults to 1000
+"wait"  defaults to 10 must use PUSH_PLUS  used for on
+*/
+
+/*QUAKED trigger_hurt (.5 .5 .5) ? START_OFF TOGGLE SILENT NO_PROTECTION SLOW
+Any entity that touches this will be hurt.
+
+It does dmg points of damage each server frame
+
+SILENT			supresses playing the sound
+SLOW			changes the damage rate to once per second
+NO_PROTECTION	*nothing* stops the damage
+
+"dmg"			default 5 (whole numbers only)
+
+*/
+
+/*QUAKED trigger_hurt_fire (.5 .5 .5) ? START_OFF TOGGLE SILENT NO_PROTECTION SLOW
+Any entity that touches this will be hurt.
+
+It does dmg points of damage each server frame and burns the player
+
+SILENT			supresses playing the sound
+SLOW			changes the damage rate to once per second
+NO_PROTECTION	*nothing* stops the damage
+
+"dmg"			default 5 (whole numbers only)
+
+*/
+
+/*QUAKED trigger_monsterjump (.5 .5 .5) ?
+Walking monsters that touch this will jump in the direction of the trigger's angle
+"speed" default to 200, the speed thrown forward
+"height" default to 200, the speed thrown upwards
+*/
+
+/*QUAKED trigger_unlock (.5 .5 .5) ?
+Player will unlock a targeted door when this brush is touched
+Can be triggered also!
+door's "key" should equal -1
+"target" target ID to match door
+*/
+/*QUAKED trigger_motorcycle (.5 .5 .5) ?
+Will trigger the motorcycle
+*/
+/*QUAKED info_player_start (1 0 0) (-16 -16 -24) (16 16 48) 
+The normal starting point for a level.
+*/
+/*QUAKED info_player_deathmatch (1 0 1) (-16 -16 -24) (16 16 48) 
+potential spawning position for deathmatch games
+*/
+/*QUAKED info_player_coop (1 0 1) (-16 -16 -24) (16 16 48) 
+potential spawning position for ai gang members
+*/
+/*QUAKED info_player_intermission (1 0 1) (-16 -16 -24) (16 16 32)
+The deathmatch intermission point will be at one of these
+Use 'angles' instead of 'angle', so you can set pitch or roll as well as yaw.  'pitch yaw roll'
+*/
+/*QUAKED dm_cashspawn (0.5 0 1) (-16 -16 -16) (16 16 16)
+Spawn location for cash during "Grab da Loot" games
+
+  angle - direction to project cash upon spawning
+  speed - speed of projection
+  type	- "cashroll" or "cashbag" (more money, longer delay)
+*/
+/*QUAKED dm_safebag (0.5 0 1) (-12 -12 -16) (12 12 12)
+Bag that holds the money in the safe.
+Assault 2 , this is the depository for the keys.
+Assault 2 , don't specify a "type" and the bag won't appear.
+Assault 2 , "type" specifies a model to use starting in kingpin/main/
+Assault 2 , Example: type models/props/radio/tris.md2
+
+  style - team that this bag belongs to (1 or 2)
+*/
+/*QUAKED dm_props_banner (.5 0 1) (-47 -6 -100) (47 6 100) 
+Temp banner for teamplay
+
+ style = team (1 / 2)
+ scale = scale the size up/down (2 = double size)
+
+model="models\props\flag\flag1.md2"
+*/
+/*QUAKED weapon_mortar (.3 .3 1) (-32 -32 -48) (32 32 32)
+model="models/weapons/g_mortar/mortar.mdx"
+Mortar to frag your punk ass. Assault 2
+"style" [ 1 or 2 ] Disables the opposing team's usage.
+*/
+/*QUAKED weapon_dynamite (.3 .3 1) (-16 -16 -16) (16 16 16)
+model="models/props/dynomite/tris.md2"
+Dynamite bundles to blow your hand off! Assault 2
+"style" [ 1 or 2 ] Disables the opposing team's usage.
+*/
+/*QUAKED weapon_msg90 (.3 .3 1) (-32 -16 -32) (40 20 -24)
+model="models/weapons/g_msg90/tris.md2"
+High Velocity Sniper Rifle to blow your head off! Assault 2
+"option" [ 1 or 2 ] 1 = lying on it's side. 2 = Leaning against wall.
+"style" [ 1 or 2 ] Disables the opposing team's usage.
+*/
+/*QUAKED func_turretdriver (0 .5 .8) ? START_OPEN
+REQUIRES ITS OWN ORIGIN BRUSH! Assault 2
+"team" to link it to the breach (and base if you got one).
+"type" sound path from main/sound. Noise driver makes when it is turning.
+"duration" number of seconds before turning sound should play again (default 1).
+"style" Disables turret for the opposite team. style 1 dragons only.
+"message" the centerprint msg. "You can't use this style turret."
+"message" can also be used without a style "Press ACTIVATE to shoot"
+"option" number of degrees H_rotational offset to aim initial turret position.
+*/
+/*QUAKED func_turretbase (0 .5 .8) ? START_OPEN
+REQUIRES ITS OWN ORIGIN BRUSH! (TURRETBASE IS OPTIONAL) Assault 2
+"team" to link it to the driver.
+"option" number of degrees H_rotational offset to aim initial turret position.
+"style" Disables turret for the opposite team. style 1 dragons only
+"missteam" Yaw limit for aiming right(negative numbers only). Not to exceed -180.
+"misstime" Yaw limit for aiming left (positive numbers only). Not to exceed  180.
+*/
+/*QUAKED func_turretbreach (0 .5 .8) ? CHIEF_FLAG1 CHIEF_FLAG2 CHIEF_FLAG4 CHIEFS_DEBUG MUZZLE_FIREBALL MUZZLE_LRGSPARKS MUZZLE_FIRENSPARKS MUZZLE_BFGLASER
+REQUIRES ITS OWN ORIGIN BRUSH! Assault 2
+"team" to link it to the driver.
+"count" the length of your turretbreach from the origin messured in single grid.
+"count" is very important to make your rockets come out at the end of the breach depending on how long you make your breachs (default 100). To see how long your breach is, select it and press Q, the length will show in any 2D view.
+"viewheight" ammount of Z axis offset measured in single grid units from origin.
+"type" sound path from main/sound.  For Example: type world/pawnomatic/weapon7.wav
+"firetype" (4,6,7,8) default 7 (rockets), 6 grenades , 8 flame, etc.
+"delay" for firetype 6 (grenades) only. (default 1.1 sec)How long before explosion.
+"duration" number of seconds before turret fires again(default 1.3)
+"speed" muzzle velocity of the projectile. (default 1000).
+"dmg"	damage turret shell inflicts on enemies (default 10).
+"moral" Pitch limit for aiming down  (positive numbers only). Not to exceed  180.
+"order" Pitch limit for aiming up    (negative numbers only). Not to exceed -180.
+"missteam" Yaw limit for aiming right(negative numbers only). Not to exceed -180.
+"misstime" Yaw limit for aiming left (positive numbers only). Not to exceed  180.
+"option" number of degrees H_rotational offset to aim initial turret position.
+"health" if set, turret can be killed. Hogie this don't work yet.
+"timemissing" amount of down time if the turret gets killed. (default 60.0)
+CHIEFS_DEBUG will print out a message during runtime displaying PITCH YAW ROLL data.
+MUZZLE_EXPLOSION will produce a fireball behind the emerging projectile.
+MUZZLE_BFGLASER is a working 'leftover' from Q2:)
+*/
+/*QUAKED target_blaster (1 0 0) (-8 -8 -8) (8 8 8) CHIEFS_MOVEIT AIM_CLIENTYAW AIM_CLIENTPITCH CHIEFS_DEBUG MUZZLE_FIREBALL MUZZLE_LRGSPARKS MUZZLE_FIRENSPARKS MUZZLE_BFGLASER
+Fires a shot in the set direction when triggered. Shot is determined by firetype.
+"firetype"  default is 7. supports 4 bullet, 6 grenade, 7 rockets.
+"dmg"		default is 15. Damage inflicted to clients by this projectile.
+"moral"     default is 0. Used with No AIM_CLIENT flags to set fixed PITCH aim.
+"order"     default is 0. Used with No AIM_CLIENT flags to set fixed YAW aim.
+"option"    default is 0 normal damage. 1 = hurt thugs only, 2 = hurt runts only.
+"speed"	default is 1000. speed effects rocket's and grenade's muzzle velocity.
+"type" sound path from main/sound.  For Example: type world/pawnomatic/weapon7.wav
+"count" length of X axis offset messured in single grid units from origin.
+"viewheight" length of Z axis offset measured in single grid units from origin.
+"delay" for firetype 6 (grenades) only. (default 1.1 sec)How long before explosion.
+"duration" number of seconds before it fires again(default 0.1)
+"duration" is redundant since you can use trigger_multiple's "wait" feature.
+CHIEFS_MOVEIT will move the blaster to the activator's (path_corner's) location.
+AIM_CLIENTYAW will aim the yaw of the shot equal to that of the activator's yaw.
+AIM_CLIENTPITCH will aim the pitch of the shot = to that of the activator's pitch.
+CHIEFS_DEBUG will print out a message during runtime displaying PITCH YAW ROLL data.
+MUZZLE_FIREBALL will produce a fireball behind the emerging projectile.
+MUZZLE_BFGLASER is a working 'leftover' from Q2:)
+*/
